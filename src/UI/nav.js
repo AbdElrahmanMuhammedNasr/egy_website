@@ -17,11 +17,10 @@ export default function NavBar() {
     ])
 
     return (
-        <div style={{width:'100%', margin:'auto'}}>
-            <nav  class="navbar navbar-expand-lg navbar-dark navbar-light bg-light  d-flex justify-content-around">
-                <a className="navbar-brand ps-3" style={{color:'black'}}>
-                    <img style={{ width: '9%' }} src={logo} />
-                    {/* EGYPROSOFT */}
+        <div style={{ width: '100%', margin: 'auto', position: 'fixed', zIndex: '1' }}>
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-light  d-flex justify-content-around">
+                <a className="navbar-brand ps-3" style={{ color: 'black' }}>
+                    <img style={{ width: '8%' }} src={logo} />
                 </a>
 
                 <div class="collapse navbar-collapse" id="navbarNav">

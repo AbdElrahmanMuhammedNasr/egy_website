@@ -1,31 +1,51 @@
 import React from "react";
+import axios from 'axios'
+import aboutImg from '../assets/about-bg.jpg'
 
-import about from '../assets/about-bg.jpg'
 export default function About() {
 
+    const [about, setAbout] = React.useState(null);
+
+
+    React.useEffect(() => {
+        axios.get('about/get-about')
+            .then(res => {
+                if (res.status == 200) {
+                    setAbout(res.data.title);
+                    // console.log(res.data);
+
+                }
+            }).catch(e => {
+                // setSuccess(false)
+            })
+
+    }, [])
+
     return (
-        <div style={{ backgroundColor: '#f5f3f3' , padding:'50px 0px'}}>
+        <div className="py-5" style={{ backgroundColor: '#f5f3f3' }}>
 
             <div className='container' >
                 <div className="row">
                     <div className="col" >
-                        <img src={about} style={{ borderRadius: '10px' }} />
+                        <img src={aboutImg} style={{ borderRadius: '10px' }} />
 
                     </div>
                     <div className="col">
 
-                        <h5>ABOUT US</h5>
-                        <p className='text-muted ' style={{ fontSize: '18px', lineHeight: '210%', }}>
-                            poribus ea, aut ipsa, blanditiis voluptates n
-                            isi quo, nulla, laborum aperiam error. Fugiat en
-                            im mollitia deleniti voluptatum reprehenderit nisi
-                            nemo temporibus voluptatem, accusamus dolorum quibusda
-                            m debitis, harum est qui amet magni illo nihil illum in
-                            facere praesentium. Ex assumenda iure quasi tempore ne
-                            mo tenetur in, explicabo dolore obcaecati magni illum
-                            reprehenderit dolores error mollitia recusandae beatae nisi. Debitis enim ipsam
-                            cupiditate, fuga omnis excepturi accusamus, suscipit a, nemo facilis ad, facere alias. Ab sint repudian
-                        </p>
+                        <h5 style={{
+                            marginBottom: '0.5rem',
+                            fontWeight: '500',
+                            lineHeight: '1.2'
+
+                        }}>ABOUT US</h5>
+
+                        {
+                            about == null ? <p>loading</p> :
+                             <p className='text-muted ' style={{ fontSize: '18px', lineHeight: '200%', }}>{about}</p>
+
+                        }
+
+
 
 
                     </div>

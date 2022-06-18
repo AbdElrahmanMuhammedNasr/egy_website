@@ -1,44 +1,63 @@
 import React from "react";
+import axios from 'axios'
 
-import serviceimg from '../assets/slider/2.jpg'
 
 export default function Service() {
+    const url = axios.defaults.baseURL;
 
-    const [service, setService] = React.useState([1, 1, 1, 1, 1, 1])
+
+    const [service, setService] = React.useState(null)
+
+    React.useEffect(() => {
+        axios.get('service/get-services')
+            .then(res => {
+                if (res.status == 200) {
+                    setService(res.data);
+                    console.log(res.data);
+
+                }
+            }).catch(e => {
+                // setSuccess(false)
+            })
+
+    }, [])
+
 
     return (
-        <div style={{ backgroundColor: '#f5f3f3' }}>
+        <div className="py-5" style={{ backgroundColor: '#f5f3f3' }}>
 
             <br />
             <br />
             <div className="container" >
                 <div class="d-flex justify-content-center">
-
                     <h2>SERVICES</h2>
-
                 </div>
+                {
+                    service == null ?
+                        <div class="spinner-border" role="status">
+                        </div> : <div className="row">
 
-                <div className="row">
+                            {
+                                service.map((e) => {
+                                    return (
+                                        <div class="col-sm-12 col-md-6 col-lg-4 ">
+                                            <div class="bg-white shadow round  text-center" style={{ marginBottom: '20px', padding: '10px' }}>
+                                                <img src={url+e.image} class="card-img-top round-top" alt="offer" style={{height:'200px'}} />
 
-                    {
-                        service.map((e) => {
-                            return (
-                                <div class="col-6 col-md-4 ">
-                                    <div class="bg-white shadow round  text-center" style={{ marginBottom: '20px', padding: '10px' }}>
-                                        <img src={serviceimg} class="card-img-top round-top" alt="offer" />
-                                
-                                        <hr />
-                                        <h5 class="text-capitalize">web application</h5>
-                                        <p class="text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni deserunt provident cum
-                                            similique vitae incidunt, iste labore ipsum eligendi fugit.</p>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                                                <hr />
+                                                <h5 class="text-capitalize">{e.name}</h5>
+                                                <p class="text-md">{e.subtitle}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
 
 
-                </div>
+                        </div>
+                }
+
+
             </div>
 
         </div>

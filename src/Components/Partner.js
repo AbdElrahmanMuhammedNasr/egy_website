@@ -1,9 +1,24 @@
 import React from "react";
-import partnerimg from '../assets/clients/01.png'
+import axios from 'axios'
 
 export default function Partner() {
+    const url = axios.defaults.baseURL;
 
-    const [partner, setPartner] = React.useState([1, 1, 1, 1, 1, 1])
+    const [partner, setPartner] = React.useState(null)
+
+    React.useEffect(() => {
+        axios.get('partner/get-partners')
+            .then(res => {
+                if (res.status == 200) {
+                    setPartner(res.data);
+                    // console.log(res.data);
+
+                }
+            }).catch(e => {
+                // setSuccess(false)
+            })
+
+    }, [])
 
     return (
         <div class="clients py-5">
@@ -15,22 +30,27 @@ export default function Partner() {
 
 
                 <div class="owl-carousel owl-theme mt-5 owl-loaded owl-drag">
+                    {
+                        partner == null ?
+                            <div class="spinner-border" role="status"></div>
+                            : <div class="row">
+
+                                {
+                                    partner.map((e) => {
+                                        return (
+                                            <div class="col-sm-6 col-lg-3">
+                                                <img class="img-fluid hvr-grow" src={url+e.image} />
+                                            </div>
+
+                                        )
+                                    })
+                                }
+
+                            </div>
+                    }
 
 
-                    <div class="row">
 
-                        {
-                            partner.map((e) => {
-                                return (
-                                    <div class="col-sm-3">
-                                        <img class="img-fluid hvr-grow" src={partnerimg} />
-                                    </div>
-
-                                )
-                            })
-                        }
-
-                    </div>
                 </div>
 
             </div>

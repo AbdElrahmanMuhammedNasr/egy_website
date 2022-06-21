@@ -6,6 +6,8 @@ export default function Project() {
     const url = axios.defaults.baseURL;
 
     const [project, setProject] = React.useState(null)
+    const [operProj, setOperProj] = React.useState(project); //filter
+
 
     const [show, setShow] = React.useState(false)
     const [index, setIndex] = React.useState(null)
@@ -16,6 +18,7 @@ export default function Project() {
             .then(res => {
                 if (res.status == 200) {
                     setProject(res.data);
+                    setOperProj(res.data);
 
                 }
             }).catch(e => {
@@ -98,46 +101,50 @@ export default function Project() {
 
     }
 
-    // const filterProject = (event, type) => {
-    //     var copyProject = [...project]
-    //     if (type == 'all') {
-    //         setProject([...project])
-    //     } else if (type == 'web') {
+    const filterProject = (event, type) => {
 
-    //         setProject([...copyProject.filter((e) => e.section == type)])
-    //     }
-    //     else if (type == 'mobile') {
 
-    //         setProject([...copyProject.filter((e) => e.section == type)])
-    //     }
-    // }
+        if (type == 'all') {
+            setOperProj([...project])
+        } else if (type == 'web') {
+            setOperProj([...project.filter((e) => e.section == type)])
+        }
+        else if (type == 'mobile') {
+
+            setOperProj([...project.filter((e) => e.section == type)])
+        }
+
+
+    }
 
     return (
         <>
-            <div className="Projects container py-5" id="projects">
+
+            <div className="Projects  py-5" id="projects" style={{ width: '85%', margin: 'auto' }}>
                 <h3 className="text-center text-uppercase">Our Popular Projects</h3>
                 <div className="row py-5">
 
-                    {/* <div className="col-12 mb-5 text-center">
+                    <div className="col-12 mb-5 text-center">
                         <button style={buttonStyle} className="btn round btn-shuffle active my-1" type="button" data-filter="all" onClick={(event) => filterProject(event, 'all')}>All</button>
                         <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-a" onClick={(event) => filterProject(event, 'web')}>Web App</button>
                         <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-b" onClick={(event) => filterProject(event, 'mobile')}>Mobile App</button>
                         <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-c" onClick={(event) => filterProject(event, 'cctv')}>CCTV</button>
                         <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-d" onClick={(event) => filterProject(event, 'network')}>Network</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-e" onClick={(event) => filter(event, 'all')}>Desktop App</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-f" onClick={(event) => filter(event, 'all')}>Digital Marketing</button>
-                    </div> */}
+                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-e" onClick={(event) => filterProject(event, 'all')}>Desktop App</button> */}
+                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-f" onClick={(event) => filterProject(event, 'all')}>Digital Marketing</button> */}
+                    </div>
 
 
-                    <div className="col-12 my-2">
-                        <div className="projects container" >
+                    <div className="col-12 my-2" >
+                        <div className="projects" >
+
 
                             {
-                                project == null ?
-                                    <div class="spinner-border" role="status">
-                                    </div> : <div className="row" >
+                                operProj == null ?
+                                    <div class="spinner-border" role="status"></div> :
+                                    <div className="row" >
                                         {
-                                            project.map((e, i) => {
+                                            operProj.map((e, i) => {
                                                 return (
                                                     <>
 
@@ -147,12 +154,12 @@ export default function Project() {
                                                                     <img src={url + e.images[0]} class="card-img-top round-top" alt="offer" style={{ height: '250px', cursor: 'pointer' }} />
                                                                 </div>
 
-                                                                <div class="card-body">
+                                                                {/* <div class="card-body">
                                                                     <a class="text-dark">
                                                                         <h5 className="text-muted">{e.name} </h5>
                                                                     </a>
 
-                                                                </div>
+                                                                </div> */}
                                                             </div>
 
                                                         </div>

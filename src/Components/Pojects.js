@@ -110,7 +110,11 @@ export default function Project() {
             setOperProj([...project.filter((e) => e.section == type)])
         }
         else if (type == 'mobile') {
-
+            setOperProj([...project.filter((e) => e.section == type)])
+        }
+        else if (type == 'network') {
+            setOperProj([...project.filter((e) => e.section == type)])
+        }else if (type == 'cctv') {
             setOperProj([...project.filter((e) => e.section == type)])
         }
 

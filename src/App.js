@@ -13,33 +13,18 @@ function App() {
     <div className="App" style={{ height: '100vh', }}>
       <NavBar />
       <Slider />
-      <br />
-      <br />
-      <br />
       <About />
-      <br />
-      <br />
-      <br />
+    
       <Offer style={{ backgroundColor: 'white' }} />
-      <br />
-      <br />
-      <br />
+    
       <Service />
-      <br />
-      <br />
-      <br />
+
       <Project style={{ backgroundColor: 'white' }} />
-      <br />
-      <br />
-      <br />
+
       <Testmon />
-      <br />
-      <br />
-      <br />
+ 
       <Partner />
-      <br />
-      <br />
-      <br />
+    
       <Conect />
 
     </div>

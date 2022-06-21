@@ -17,8 +17,8 @@ export default function NavBar() {
     ])
 
     return (
-        <div style={{ width: '100%', margin: 'auto', position: 'fixed', zIndex: '1' }}>
-            <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-light  d-flex justify-content-around">
+        <div style={{ width: '100%', margin: 'auto', position: 'fixed', zIndex: '1',backgroundColor:'transparent' }}>
+            <nav class="navbar navbar-expand-lg navbar-dark   d-flex justify-content-around">
                 <a className="navbar-brand ps-3" style={{ color: 'black' }}>
                     <img style={{ width: '8%' }} src={logo} />
                 </a>

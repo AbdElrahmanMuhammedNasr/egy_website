@@ -16,7 +16,6 @@ export default function Project() {
             .then(res => {
                 if (res.status == 200) {
                     setProject(res.data);
-                    // console.log(res.data);
 
                 }
             }).catch(e => {
@@ -47,14 +46,13 @@ export default function Project() {
     }
 
     const projectTetails = (e) => {
-        console.log(e);
 
         return (
 
             <div class="modal-dialog modal-lg offerDetails" style={{ maxWidth: '100%' }}>
                 <div class="modal-content round">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Project name</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">{e.name} -<span className="text-success">  {e.section}</span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" onClick={(event) => setShow(false)}>×</span>
                         </button>
@@ -79,7 +77,7 @@ export default function Project() {
                             </div>
                             <hr />
                             <p class="card-text text-success">
-                                <span class="text-muted"><a href="#" style={{ color: 'black' }}> Visit Website </a></span>
+                                <span class="text-muted"><a href={e.link} style={{ color: 'black' }}> Visit Website </a></span>
                             </p>
                         </div>
 
@@ -102,11 +100,9 @@ export default function Project() {
 
     // const filterProject = (event, type) => {
     //     var copyProject = [...project]
-    //     console.log(type)
     //     if (type == 'all') {
     //         setProject([...project])
     //     } else if (type == 'web') {
-    //         console.log(type)
 
     //         setProject([...copyProject.filter((e) => e.section == type)])
     //     }
@@ -149,12 +145,11 @@ export default function Project() {
                                                             <div class="card border-0 shadow round hvr-float">
                                                                 <div class="project">
                                                                     <img src={url + e.images[0]} class="card-img-top round-top" alt="offer" style={{ height: '250px', cursor: 'pointer' }} />
-
-
                                                                 </div>
+
                                                                 <div class="card-body">
-                                                                    <a href="offer.html" class="text-dark">
-                                                                        <h5>{e.section}</h5>
+                                                                    <a class="text-dark">
+                                                                        <h5 className="text-muted">{e.name} </h5>
                                                                     </a>
 
                                                                 </div>

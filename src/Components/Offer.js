@@ -3,7 +3,7 @@ import uuid from "react-uuid";
 import axios from 'axios'
 
 import Carousel from 'react-bootstrap/Carousel';
-
+import '../Css/style.css'
 
 
 export default function Offer() {
@@ -19,7 +19,6 @@ export default function Offer() {
             .then(res => {
                 if (res.status == 200) {
                     setOffer(res.data);
-                    // console.log(res.data);
 
                 }
             }).catch(e => {
@@ -58,27 +57,28 @@ export default function Offer() {
 
     const offerTetails = (e) => {
 
-        console.log(e)
         return (
 
             <div class="modal-dialog modal-lg offerDetails" style={{ maxWidth: '100%' }}>
                 <div class="modal-content round">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">{e.title}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" style={{fontWeight:"bold"}} className="text-dark">{e.title}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" onClick={(event) => setShow(false)}>×</span>
                         </button>
                     </div>
 
                     <div class="modal-body">
 
-                        <div class="offer bg-wihte py-5" id="orderProduct">
+                        <div class="offer bg-wihte " id="orderProduct">
                             <div class="row">
                                 <div class="col-md-6">
 
 
 
-                                    <Carousel activeIndex={indexC} onSelect={handleSelect}>
+                                    {/* <Carousel activeIndex={indexC} onSelect={handleSelect}> */}
+                                    <Carousel indicators={false} prevLabel={''} nextLabel={''} activeIndex={indexC} onSelect={handleSelect}>
+
                                         {
                                             e.images.map((image) => {
                                                 return (
@@ -86,8 +86,8 @@ export default function Offer() {
                                                         <img
                                                             className="d-block w-100 round"
                                                             src={url + image}
-                                                        // alt={item.alt}
-                                                        style={{height:'30rem'}}
+                                                            // alt={item.alt}
+                                                            style={{ height: '25rem' }}
                                                         />
 
                                                     </Carousel.Item>
@@ -98,7 +98,7 @@ export default function Offer() {
 
 
                                     <hr />
-                                    <p class="card-text text-success"><span class="text-muted mr-2">Offer Expire Date</span>{e.exDate.split('T')[0]}</p>
+                                    <p class="card-text text-success"><span class="text-muted mr-2">Offer Expire Date:</span>{e.exDate.split('T')[0]}</p>
                                 </div>
                                 <div class="col-md-6">
                                     <h1 class="text-dark">{e.title}</h1>
@@ -141,26 +141,25 @@ export default function Offer() {
 
 
     return (
-        <div className="container">
+        <div className="py-5 " style={{width:'85%', margin:'auto'}}>
 
 
 
             <div class="d-flex justify-content-center">
 
-                <h2>BEST OFFERS</h2>
+                <h2><span class="card-text text-success">BEST </span> OFFERS</h2>
 
             </div>
 
             {
-                offer == null ? <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div> : <div className="row">
+                offer == null ? <div class="spinner-border" role="status">  </div> :
+                 <div className="row">
 
                     {
                         offer.map((e, i) => {
                             return (
                                 <>
-                                    <div class="col-sm-4 my-3">
+                                    <div class="col-sm-6 col-lg-4  my-3 ">
                                         <div class="card border-0 shadow round hvr-float">
                                             <div class="project">
                                                 <img src={url + e.images[0]} class="card-img-top round-top" alt="offer" style={{ height: '250px' }} />
@@ -181,8 +180,11 @@ export default function Offer() {
                                                 </a>
                                                 <hr />
 
-                                                <p class="card-text text-success"><del class="text-muted mr-2">{e.oldPrice}</del>{e.newPrice}$</p>
-                                                <p class="card-text text-success"><del class="text-muted mr-2">Offer Expire Date</del>{e.exDate.split('T')[0]}</p>
+                                                <p class="card-text text-success"><span class="text-muted mr-2">Offer:</span>
+                                                    <del class="text-muted mr-2">{e.oldPrice} EGP</del>  {e.newPrice} EGP
+                                                    {/* <span>( {e.newPrice / e.oldPrice * 100}% )</span> */}
+                                                </p>
+                                                <p class="card-text text-success"><span class="text-muted mr-2">Offer Expire Date:</span>{e.exDate.split('T')[0]}</p>
                                             </div>
                                         </div>
 

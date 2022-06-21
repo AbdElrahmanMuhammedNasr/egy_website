@@ -11,7 +11,6 @@ export default function Partner() {
             .then(res => {
                 if (res.status == 200) {
                     setPartner(res.data);
-                    // console.log(res.data);
 
                 }
             }).catch(e => {
@@ -33,14 +32,12 @@ export default function Partner() {
                     {
                         partner == null ?
                             <div class="spinner-border" role="status"></div>
-                            : <div class="row">
+                            : <div class="row d-flex justify-content-center">
 
                                 {
                                     partner.map((e) => {
                                         return (
-                                            <div class="col-sm-6 col-lg-3">
-                                                <img class="img-fluid hvr-grow" src={url+e.image} />
-                                            </div>
+                                            <img class="col-lg-3 img-fluid " style={{width:'50%'}} src={url + e.image} />
 
                                         )
                                     })

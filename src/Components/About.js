@@ -12,7 +12,6 @@ export default function About() {
             .then(res => {
                 if (res.status == 200) {
                     setAbout(res.data.title);
-                    // console.log(res.data);
 
                 }
             }).catch(e => {
@@ -22,12 +21,12 @@ export default function About() {
     }, [])
 
     return (
-        <div className="py-5" style={{ backgroundColor: '#f5f3f3' }}>
+        <div className="" style={{ backgroundColor: '#f5f3f3', paddingTop:'60px',paddingBottom:'60px' }}>
 
             <div className='container' >
                 <div className="row">
                     <div className="col" >
-                        <img src={aboutImg} style={{ borderRadius: '10px' }} />
+                        <img src={aboutImg} style={{ borderRadius: '10px',marginBottom:'20px' }} />
 
                     </div>
                     <div className="col">
@@ -40,15 +39,15 @@ export default function About() {
                         }}>ABOUT US</h5>
 
                         {
-                            about == null ? <p>loading</p> :
-                             <p className='text-muted ' style={{ fontSize: '18px', lineHeight: '200%', }}>{about}</p>
+                            about == null ? <div class="spinner-border" role="status"></div> :
+                             <p className='text-muted my-5' style={{ fontSize: '18px' }}>{about}</p>
 
                         }
 
 
 
 
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

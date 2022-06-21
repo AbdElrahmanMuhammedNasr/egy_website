@@ -13,7 +13,6 @@ export default function Service() {
             .then(res => {
                 if (res.status == 200) {
                     setService(res.data);
-                    console.log(res.data);
 
                 }
             }).catch(e => {
@@ -25,6 +24,7 @@ export default function Service() {
 
     return (
         <div className="py-5" style={{ backgroundColor: '#f5f3f3' }}>
+
 
             <br />
             <br />

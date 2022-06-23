@@ -18,12 +18,40 @@ export default function NavBar() {
 
     return (
         <div style={{ position: '', zIndex: '1', backgroundColor: '#0865b4', opacity: '' }}>
-            <nav style={{ width: '80%', margin: 'auto' }} class="navbar navbar-expand-lg navbar-dark   d-flex justify-content-around">
+
+
+            <nav style={{ width: '80%', margin: 'auto' }} class="navbar navbar-expand-lg navbar-dark   row">
+                <Link className="navbar-brand ps-3 col-7" style={{ color: 'black' }} to={"/"}>
+                    <img className="" style={{ width: '10%' }} src={logo} />
+                    {/* <img className="d-block d-sm-none" style={{ width: '20%' }} src={logo} /> */}
+                </Link>
+                <button style={{ marginLeft: 'auto' }} class="navbar-toggler col" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse col" id="navbarNav">
+                    <ul class="navbar-nav">
+                        {
+                            pages.map((e) => {
+                                return (
+                                    <a class="nav-link scroll" style={{ color: 'white' }} href={e.link}>{e.name}</a>
+
+                                );
+                            })
+                        }
+
+
+                    </ul>
+                </div>
+            </nav>
+
+            {/* <nav style={{ width: '80%', margin: 'auto' }} class="navbar navbar-expand-lg navbar-dark   d-flex justify-content-around">
                 <Link className="navbar-brand ps-3" style={{ color: 'black' }} to={"/"}>
                     <img style={{ width: '10%' }} src={logo} />
                 </Link>
 
-              
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -42,11 +70,8 @@ export default function NavBar() {
 
                 </div>
 
-                {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> */}
 
-            </nav>
+            </nav> */}
 
 
         </div>

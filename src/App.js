@@ -8,48 +8,64 @@ import Service from './Components/Services';
 import Slider from './Components/Slider';
 import Testmon from './Components/Testmon';
 import NavBar from './UI/nav';
-import {  Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import MoreProject from './Components/MoreProject';
+import React from 'react';
+
+import lodimg from '../src/assets/loading.gif'
 
 function App() {
-  setTimeout(function(){
-    console.log("----------------")
-  }, 3000); 
+
+  const [loading, setLoading] = React.useState(false)
+
+  setTimeout(function () {
+    setLoading(true);
+  }, 5000);
   return (
     <div className="App" style={{ height: '100vh', }}>
-
-      <NavBar />
-
-      <Routes>
-
-      <Route path="/" element={<Navigate to="/main" replace />} />
-
-        <Route path='/main' element={
-
-          <div>
-            <Slider />
-            <About />
-            <Offer style={{ backgroundColor: 'white' }} />
-            <Service />
-            <Project style={{ backgroundColor: 'white' }} />
-            <Testmon />
-            <Partner />
+      {
+        loading == false
+          ? <div className="text-center">
+            <img src={lodimg} />
           </div>
 
+          : <>
+            <NavBar />
 
-        } />
+            <Routes>
+
+              <Route path="/" element={<Navigate to="/main" replace />} />
+
+              <Route path='/main' element={
+
+                <div>
+                  <Slider />
+                  <About />
+                  <Offer style={{ backgroundColor: 'white' }} />
+                  <Service />
+                  <Project style={{ backgroundColor: 'white' }} />
+                  <Testmon />
+                  <Partner />
+                </div>
 
 
-        <Route path='/more-offer' element={<MoreOffer />} />
-        
-        <Route path='/more-project' element={<MoreProject />} />
-
-      </Routes>
+              } />
 
 
+              <Route path='/more-offer' element={<MoreOffer />} />
+
+              <Route path='/more-project' element={<MoreProject />} />
+
+            </Routes>
 
 
-      <Conect />
+
+
+            <Conect />
+          </>
+      }
+
+
 
     </div>
   );

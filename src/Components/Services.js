@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios'
-import img from './1.png'
 
 
 export default function Service() {
@@ -47,7 +46,6 @@ export default function Service() {
                                         <div class="col-sm-12 col-md-6 col-lg-4  my-3">
                                             <div class="bg-white shadow round text-center service-item">
                                                 <i class=" mb-3 hvr-bounce-in">
-                                                    {/* <img src={img} class="card-img-top round-top" alt="offer" style={{ height: '200px', width: '150px' }} /> */}
                                                     <img src={url + e.image} class="card-img-top round-top" alt="offer" style={{ height: '200px', width: '150px' }} />
 
                                                 </i>

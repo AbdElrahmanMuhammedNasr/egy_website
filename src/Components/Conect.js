@@ -5,7 +5,7 @@ import '../Css/style.css'
 export default function Conect() {
 
     return (
-        <div style={{ backgroundColor: '#f5f3f3' }}>
+        <div  id="connect" style={{ backgroundColor: '#f5f3f3' }}>
             <div class="bg-gray py-5 center-sm border-top" id="contact">
                 <div class="container py-5">
                     <h3 class="text-dark text-uppercase text-center">get in touch</h3>

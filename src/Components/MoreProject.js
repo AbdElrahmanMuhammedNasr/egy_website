@@ -3,7 +3,7 @@ import React from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 
-export default function Project() {
+export default function MoreProject() {
     const url = axios.defaults.baseURL;
 
     const [project, setProject] = React.useState(null)
@@ -126,8 +126,8 @@ export default function Project() {
     return (
         <>
 
-            <div  id="projects" className="Projects  py-5" style={{ width: '85%', margin: 'auto' }}>
-                <h3 className="text-center text-uppercase"><span class="card-text text-success">Popular</span> Projects</h3>
+            <div className="Projects  py-5" id="projects" style={{ width: '85%', margin: 'auto' }}>
+            <h3 className="text-center text-uppercase"><span class="card-text text-success">Popular</span> Projects</h3>
                 <div className="row py-5">
 
                     <div className="col-12 mb-5 text-center">
@@ -150,7 +150,7 @@ export default function Project() {
                                     <div class="spinner-border" role="status"></div> :
                                     <div className="row" >
                                         {
-                                            operProj.slice(0,3).map((e, i) => {
+                                            operProj.map((e, i) => {
                                                 return (
                                                     <>
 
@@ -187,9 +187,7 @@ export default function Project() {
                         </div>
                     </div>
                 </div>
-                <div className="text-center text-uppercase">
-                    <Link type="button" class="btn btn-success" to="/more-project">Show More Project</Link>
-                </div>
+          
 
             </div>
         </>

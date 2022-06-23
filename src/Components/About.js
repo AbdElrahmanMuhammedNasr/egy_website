@@ -21,7 +21,7 @@ export default function About() {
     }, [])
 
     return (
-        <div className="" style={{ backgroundColor: '#f5f3f3', paddingTop:'60px',paddingBottom:'60px' }}>
+        <div id="about" className="" style={{ backgroundColor: '#f5f3f3', paddingTop:'60px',paddingBottom:'60px' }}>
 
             <div className='container' >
                 <div className="row">

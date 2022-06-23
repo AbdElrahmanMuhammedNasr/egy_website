@@ -24,7 +24,7 @@ export default function Service() {
 
 
     return (
-        <div className="py-5" style={{ backgroundColor: '#f5f3f3' }}>
+        <div className="py-5"  id="service" style={{ backgroundColor: '#f5f3f3' }}>
 
             <br />
             <div className="py-5" style={{ backgroundColor: '#f5f3f3', width: '85%', margin: 'auto' }} >

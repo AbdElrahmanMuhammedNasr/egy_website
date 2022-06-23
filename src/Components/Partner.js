@@ -20,7 +20,7 @@ export default function Partner() {
     }, [])
 
     return (
-        <div class="clients py-5">
+        <div class="clients py-5" id="partner">
             <div class="container py-5" id="cls">
                 <h3 class="text-center text-uppercase">Our Awesome Partener</h3>
 
@@ -29,6 +29,7 @@ export default function Partner() {
 
 
                 <div class="owl-carousel owl-theme mt-5 owl-loaded owl-drag">
+
                     {
                         partner == null ?
                             <div class="spinner-border" role="status"></div>

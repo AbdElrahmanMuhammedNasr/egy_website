@@ -24,7 +24,7 @@ export default function Testmon() {
     }, [])
 
     return (
-        <div class="testimonials" style={{ background: 'url(' + Testimg + ') center fixed', backgroundSize: 'cover' }}>
+        <div class="testimonials"  id="testmonials" style={{ background: 'url(' + Testimg + ') center fixed', backgroundSize: 'cover' }}>
             <div class="overlay py-5">
                 <div class="container py-5">
                     <h3 class="text-center text-uppercase text-light ">Testimonials</h3>

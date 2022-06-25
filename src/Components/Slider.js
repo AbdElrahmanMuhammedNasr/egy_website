@@ -33,7 +33,7 @@ export default function Slider() {
     };
 
     return (
-        <div id="home">
+        <div id="home" >
 
             {
                 slider == null ? <div class="spinner-border" role="status"></div> :

@@ -129,7 +129,7 @@ export default function MoreOffer() {
 
 
     return (
-        <div className="py-5 " style={{width:'85%', margin:'auto' }}>
+        <div className="" style={{width:'80%', margin:'auto' ,paddingTop:'100px'}}>
 
 
 

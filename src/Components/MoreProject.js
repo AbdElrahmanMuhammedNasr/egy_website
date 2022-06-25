@@ -126,7 +126,7 @@ export default function MoreProject() {
     return (
         <>
 
-            <div className="Projects  py-5" id="projects" style={{ width: '85%', margin: 'auto' }}>
+            <div className="Projects " id="projects" style={{width:'80%', margin:'auto' ,paddingTop:'100px'}}>
             <h3 className="text-center text-uppercase"><span class="card-text text-success">Popular</span> Projects</h3>
                 <div className="row py-5">
 

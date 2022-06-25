@@ -38,7 +38,7 @@ function App() {
 
               <Route path='/main' element={
 
-                <div>
+                <div >
                   <Slider />
                   <About />
                   <Offer style={{ backgroundColor: 'white' }} />

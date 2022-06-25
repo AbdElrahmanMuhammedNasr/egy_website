@@ -2,6 +2,9 @@ import React from "react";
 
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import img from '../assets/about-bg.jpg'
+import Carousel from 'react-bootstrap/Carousel';
+
 
 export default function Project() {
     const url = axios.defaults.baseURL;
@@ -50,56 +53,103 @@ export default function Project() {
         transition: 'transform 0.5s ease, -webkit-transform 0.5s ease'
     }
 
-    const projectTetails = (e) => {
+
+    const [indexc, setIndexc] = React.useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndexc(selectedIndex);
+    };
+
+
+    const [select, setSelect] = React.useState(null);
+
+    const projectTetails = () => {
 
         return (
 
-            <div class="modal-dialog modal-lg offerDetails" style={{ maxWidth: '100%' }}>
-                <div class="modal-content round">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">{e.name} -<span className="text-success">  {e.section}</span></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" onClick={(event) => setShow(false)}>×</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <div class="offer bg-wihte " id="orderProduct">
-                            <div class="row" style={{ backgroundColor: " " }}>
-
-                                {
-                                    e.images.map((image) => {
-                                        return (
-                                            <div class="col-sm-4" >
-                                                <img class="d-block w-100" src={url + image} alt="First slide" style={{ height: '30vh', borderRadius: '10px', marginBottom: '10px' }} />
-                                            </div>
-                                        )
-                                    })
-                                }
-
-
-                            </div>
-                            <hr />
-                            <p class="card-text text-success">
-                                <span class="text-muted"><a href={e.link} style={{ color: 'black' }}> Visit Website </a></span>
-                            </p>
-                        </div>
-
-
-
-                    </div>
-
-
+            <>
+                <div style={{ opacity: '0.6', backgroundColor: 'black', width: '100vw', height: '100vh', position: 'fixed', top: 0, bottom: 0, zIndex: '100' }}>
                 </div>
-            </div>
+
+                <div style={{ position: 'fixed', top: '1vh', bottom: '', left: '0', right: '0', zIndex: '200' }} className="container">
+
+
+                    <span aria-hidden="true" onClick={(event) => setShow(false)}>
+                    <i class="fa fa-window-close" aria-hidden="true" style={{color:'white',cursor:'pointer'}}></i>
+                    </span>
+
+
+
+                    <Carousel indicators={false} prevLabel={''} nextLabel={''} activeIndex={indexc} onSelect={handleSelect}>
+                        {
+                            select.images.map((e) => {
+                                return (
+                                    <Carousel.Item>
+
+
+
+                                        <img
+                                            className="d-block w-100"
+                                            src={url + e}
+                                            style={{ height: '90vh', width: '80vw' }}
+                                        // alt={item.alt}
+                                        />
+                                    </Carousel.Item>
+
+
+                                )
+                            })
+                        }
+                    </Carousel>
+                </div>
+            </>
+            // <div class="modal-dialog modal-lg offerDetails" style={{ maxWidth: '100%' }}>
+            //     <div class="modal-content round">
+            //         <div class="modal-header">
+            //             <h5 class="modal-title" id="exampleModalCenterTitle">{e.name} -<span className="text-success">  {e.section}</span></h5>
+            //             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            //                 <span aria-hidden="true" onClick={(event) => setShow(false)}>×</span>
+            //             </button>
+            //         </div>
+
+            //         <div class="modal-body">
+
+            //             <div class="offer bg-wihte " id="orderProduct">
+            //                 <div class="row" style={{ backgroundColor: " " }}>
+
+            //                     {
+            //                         e.images.map((image) => {
+            //                             return (
+            //                                 <div class="col-sm-4" >
+            //                                     <img class="d-block w-100" src={url + image} alt="First slide" style={{ height: '30vh', borderRadius: '10px', marginBottom: '10px' }} />
+            //                                 </div>
+            //                             )
+            //                         })
+            //                     }
+
+
+            //                 </div>
+            //                 <hr />
+            //                 <p class="card-text text-success">
+            //                     <span class="text-muted"><a href={e.link} style={{ color: 'black' }}> Visit Website </a></span>
+            //                 </p>
+            //             </div>
+
+
+
+            //         </div>
+
+
+            //     </div>
+            // </div>
 
         )
     }
 
-    const showDetails = (event, i) => {
+    const showDetails = (event, i, e) => {
         setIndex(i)
         setShow(true)
+        setSelect(e)
 
     }
 
@@ -126,7 +176,12 @@ export default function Project() {
     return (
         <>
 
-            <div  id="projects" className="Projects  py-5" style={{ width: '85%', margin: 'auto' }}>
+            {
+                show == true ? projectTetails() : null
+
+            }
+
+            <div id="projects" className="Projects  py-5" style={{ width: '85%', margin: 'auto' }}>
                 <h3 className="text-center text-uppercase"><span class="card-text text-success">Popular</span> Projects</h3>
                 <div className="row py-5">
 
@@ -145,36 +200,50 @@ export default function Project() {
                         <div className="projects" >
 
 
+
+
+
                             {
                                 operProj == null ?
                                     <div class="spinner-border" role="status"></div> :
                                     <div className="row" >
                                         {
-                                            operProj.slice(0,3).map((e, i) => {
+                                            operProj.slice(0, 3).map((e, i) => {
                                                 return (
                                                     <>
 
-                                                        <div class="col-sm-4 my-3" onClick={(event) => showDetails(event, i)}>
+                                                        <div class="col-md-4 col-sm-6 my-3 mix category-b category-e" data-order="2">
+                                                            <div class="py-3 project">
+                                                                <img class="card-img-top round-top" src={url + e.images[0]} style={{ height: '250px', cursor: 'pointer' }} />
+                                                                <div class="project-opts rounded">
+                                                                    <div>
+                                                                        <a class="mr-3 hvr-grow" data-fancybox="gallery" href={e.link} data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View">
+                                                                            <i class="fa fa-link"></i>
+
+                                                                        </a>
+
+                                                                        <a class="ml-3 hvr-grow" onClick={(event) => showDetails(event, i, e)} target="_blank" rel="noreferrer" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Open">
+                                                                            <i class="fa fa-camera"></i>
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {/* <div class="col-sm-4 my-3" onClick={(event) => showDetails(event, i)}>
                                                             <div class="card border-0 shadow round hvr-float">
                                                                 <div class="project">
                                                                     <img src={url + e.images[0]} class="card-img-top round-top" alt="offer" style={{ height: '250px', cursor: 'pointer' }} />
                                                                 </div>
-
-                                                                {/* <div class="card-body">
-                                                                    <a class="text-dark">
-                                                                        <h5 className="text-muted">{e.name} </h5>
-                                                                    </a>
-
-                                                                </div> */}
                                                             </div>
 
-                                                        </div>
+                                                        </div> */}
 
 
-                                                        {
+                                                        {/* {
                                                             (i == index && show) ? projectTetails(e) : null
 
-                                                        }
+                                                        } */}
                                                     </>
                                                 )
                                             })

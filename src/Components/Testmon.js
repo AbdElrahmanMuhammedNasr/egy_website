@@ -3,6 +3,7 @@ import Testimg from '../assets/testimonials-bg.jpg'
 import '../Css/style.css';
 import axios from 'axios'
 
+import '../Css/style.css'
 
 export default function Testmon() {
     const url = axios.defaults.baseURL;
@@ -24,7 +25,7 @@ export default function Testmon() {
     }, [])
 
     return (
-        <div class="testimonials"  id="testmonials" style={{ background: 'url(' + Testimg + ') center fixed', backgroundSize: 'cover' }}>
+        <div class="testimonials" id="testmonials" style={{ background: 'url(' + Testimg + ') center fixed', backgroundSize: 'cover' }}>
             <div class="overlay py-5">
                 <div class="container py-5">
                     <h3 class="text-center text-uppercase text-light ">Testimonials</h3>
@@ -33,16 +34,16 @@ export default function Testmon() {
                         testimonials == null ?
                             <div class="spinner-border" role="status"></div>
                             :
-                            <div className="row my-2">
+                            <div className="my-2" style={{ overflow: 'auto', whiteSpace: 'nowrap' }} >
 
                                 {
                                     testimonials.map((e) => {
                                         return (
-                                            <div class="owl-item cloned col-md-6 col-sm-12 " style={{ width: '450px', marginTop: '20px' }}>
+                                            <div class="owl-item cloned p-3" style={{ width: '450px', marginTop: '20px', display: 'inline-block' }}>
                                                 <div class="bg-light p-3 rounded text-center ">
-                                                    <img src={url+ e.image} class="img-fluid rounded-circle mx-auto mb-3" style={{height:'100px', width:'100px'}} />
-                                                    <div>
-                                                        <q class="text-muted">{e.subtitle}</q>
+                                                    <img src={url + e.image} class="img-fluid rounded-circle mx-auto mb-3" style={{ height: '100px', width: '100px' }} />
+                                                    <div  style={{ wordWrap: 'break-word' }}>
+                                                        <p class="text-muted">{e.subtitle}</p>
                                                         <p class="text-sm mt-3">{e.name}</p>
 
                                                     </div>

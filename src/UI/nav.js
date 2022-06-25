@@ -17,7 +17,7 @@ export default function NavBar() {
     ])
 
     return (
-        <div style={{ position: 'fixed', zIndex: '4', backgroundColor: '#0865b4', opacity: '' }}>
+        <div style={{ position: 'fixed', zIndex: '4', backgroundColor: 'white', opacity: '' }}>
 
 
             <nav style={{ width: '80%', margin: 'auto' }} class="navbar navbar-expand-lg navbar-dark   row">
@@ -33,7 +33,7 @@ export default function NavBar() {
                         {
                             pages.map((e) => {
                                 return (
-                                    <a class="nav-link scroll" style={{ color: 'white' }} href={e.link}>{e.name}</a>
+                                    <a class="nav-link scroll" style={{ color: 'gray' }} href={e.link}>{e.name}</a>
 
                                 );
                             })

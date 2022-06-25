@@ -53,7 +53,7 @@ export default function Slider() {
                                         <div style={{ opacity: '0.6', backgroundColor: 'black', width: '100vw', height: '100vh', position: 'absolute', top: 0, bottom: 0 }}>
                                         </div>
 
-                                        <Carousel.Caption style={{ position: 'absolute', top: '40%' }}>
+                                        <Carousel.Caption style={{ position: 'absolute', top: '40%',zIndex: '1'}}>
                                             <h1 style={{ fontWeight: 'bolder', fontSize: '3rem' }}>{e.title}</h1>
                                             <p style={{ fontWeight: 'inherit' }}>{e.subtitle}</p>
                                         </Carousel.Caption>

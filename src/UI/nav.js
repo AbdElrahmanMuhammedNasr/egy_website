@@ -17,7 +17,7 @@ export default function NavBar() {
     ])
 
     return (
-        <div style={{ position: 'fixed', zIndex: '1', backgroundColor: '#0865b4', opacity: '' }}>
+        <div style={{ position: 'fixed', zIndex: '4', backgroundColor: '#0865b4', opacity: '' }}>
 
 
             <nav style={{ width: '80%', margin: 'auto' }} class="navbar navbar-expand-lg navbar-dark   row">

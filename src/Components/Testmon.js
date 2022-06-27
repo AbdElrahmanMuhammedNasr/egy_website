@@ -1,6 +1,5 @@
 import React from "react";
 import Testimg from '../assets/testimonials-bg.jpg'
-import '../Css/style.css';
 import axios from 'axios'
 
 import '../Css/style.css'
@@ -24,6 +23,8 @@ export default function Testmon() {
 
     }, [])
 
+
+
     return (
         <div class="testimonials" id="testmonials" style={{ background: 'url(' + Testimg + ') center fixed', backgroundSize: 'cover' }}>
             <div class="overlay py-5">
@@ -34,16 +35,16 @@ export default function Testmon() {
                         testimonials == null ?
                             <div class="spinner-border" role="status"></div>
                             :
-                            <div className="my-2" style={{ overflow: 'auto', whiteSpace: 'nowrap' }} >
+                            <div  className="my-2 scro" style={{ overflow: 'auto', whiteSpace: 'nowrap' }} >
 
                                 {
                                     testimonials.map((e) => {
                                         return (
-                                            <div class="owl-item cloned p-3" style={{ width: '450px', marginTop: '20px', display: 'inline-block' }}>
+                                            <div class="owl-item cloned p-3" style={{ width: '450px', marginTop: '20px', display: 'inline-block',}}>
                                                 <div class="bg-light p-3 rounded text-center ">
                                                     <img src={url + e.image} class="img-fluid rounded-circle mx-auto mb-3" style={{ height: '100px', width: '100px' }} />
-                                                    <div  style={{ wordWrap: 'break-word' }}>
-                                                        <p class="text-muted">{e.subtitle}</p>
+                                                    <div  style={{ overflow: 'hidden' }}>
+                                                        <p style={{}} class="text-muted">{e.subtitle}</p>
                                                         <p class="text-sm mt-3">{e.name}</p>
 
                                                     </div>

@@ -32,6 +32,21 @@ export default function Project() {
 
     }, [])
 
+
+    const [validsection, setvalidsection] = React.useState([]);
+
+    //  get sliders
+    React.useEffect(() => {
+        axios.get('section/get-section')
+            .then(res => {
+                if (res.status == 200) {
+                    setvalidsection(res.data);
+                }
+            }).catch(e => {
+            })
+
+    }, [])
+
     const buttonStyle = {
 
         margin: '10px',
@@ -75,7 +90,7 @@ export default function Project() {
 
 
                     <span aria-hidden="true" onClick={(event) => setShow(false)}>
-                    <i class="fa fa-window-close" aria-hidden="true" style={{color:'white',cursor:'pointer'}}></i>
+                        <i class="fa fa-window-close" aria-hidden="true" style={{ color: 'white', cursor: 'pointer' }}></i>
                     </span>
 
 
@@ -103,45 +118,6 @@ export default function Project() {
                     </Carousel>
                 </div>
             </>
-            // <div class="modal-dialog modal-lg offerDetails" style={{ maxWidth: '100%' }}>
-            //     <div class="modal-content round">
-            //         <div class="modal-header">
-            //             <h5 class="modal-title" id="exampleModalCenterTitle">{e.name} -<span className="text-success">  {e.section}</span></h5>
-            //             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            //                 <span aria-hidden="true" onClick={(event) => setShow(false)}>×</span>
-            //             </button>
-            //         </div>
-
-            //         <div class="modal-body">
-
-            //             <div class="offer bg-wihte " id="orderProduct">
-            //                 <div class="row" style={{ backgroundColor: " " }}>
-
-            //                     {
-            //                         e.images.map((image) => {
-            //                             return (
-            //                                 <div class="col-sm-4" >
-            //                                     <img class="d-block w-100" src={url + image} alt="First slide" style={{ height: '30vh', borderRadius: '10px', marginBottom: '10px' }} />
-            //                                 </div>
-            //                             )
-            //                         })
-            //                     }
-
-
-            //                 </div>
-            //                 <hr />
-            //                 <p class="card-text text-success">
-            //                     <span class="text-muted"><a href={e.link} style={{ color: 'black' }}> Visit Website </a></span>
-            //                 </p>
-            //             </div>
-
-
-
-            //         </div>
-
-
-            //     </div>
-            // </div>
 
         )
     }
@@ -187,12 +163,19 @@ export default function Project() {
 
                     <div className="col-12 mb-5 text-center">
                         <button style={buttonStyle} className="btn round btn-shuffle active my-1" type="button" data-filter="all" onClick={(event) => filterProject(event, 'all')}>All</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-a" onClick={(event) => filterProject(event, 'web')}>Web App</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-b" onClick={(event) => filterProject(event, 'mobile')}>Mobile App</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-c" onClick={(event) => filterProject(event, 'cctv')}>CCTV</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-d" onClick={(event) => filterProject(event, 'network')}>Network</button>
-                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-e" onClick={(event) => filterProject(event, 'all')}>Desktop App</button> */}
-                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-f" onClick={(event) => filterProject(event, 'all')}>Digital Marketing</button> */}
+
+
+                        {
+
+                            validsection.map((s) => {
+                                return (
+                                    <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-a" onClick={(event) => filterProject(event, s.name)}>{s.name}</button>
+
+                                )
+                            })
+
+                        }
+
                     </div>
 
 

@@ -44,7 +44,7 @@ export default function Testmon() {
                                                 <div class="bg-light p-3 rounded text-center ">
                                                     <img src={url + e.image} class="img-fluid rounded-circle mx-auto mb-3" style={{ height: '100px', width: '100px' }} />
                                                     <div  style={{ overflow: 'hidden' }}>
-                                                        <p style={{}} class="text-muted">{e.subtitle}</p>
+                                                        <textarea  disabled  style={{maxHeight:'70px', minHeight:'70px'}} class="text-muted form-control">{e.subtitle}</textarea>
                                                         <p class="text-sm mt-3">{e.name}</p>
 
                                                     </div>

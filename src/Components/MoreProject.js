@@ -30,6 +30,20 @@ export default function MorePorject() {
 
     }, [])
 
+    const [validsection, setvalidsection] = React.useState([]);
+
+    //  get sliders
+    React.useEffect(() => {
+        axios.get('section/get-section')
+            .then(res => {
+                if (res.status == 200) {
+                    setvalidsection(res.data);
+                }
+            }).catch(e => {
+            })
+
+    }, [])
+
     const buttonStyle = {
 
         margin: '10px',
@@ -73,7 +87,7 @@ export default function MorePorject() {
 
 
                     <span aria-hidden="true" onClick={(event) => setShow(false)}>
-                    <i class="fa fa-window-close" aria-hidden="true" style={{color:'white',cursor:'pointer'}}></i>
+                        <i class="fa fa-window-close" aria-hidden="true" style={{ color: 'white', cursor: 'pointer' }}></i>
                     </span>
 
 
@@ -101,7 +115,7 @@ export default function MorePorject() {
                     </Carousel>
                 </div>
             </>
-  
+
 
         )
     }
@@ -141,19 +155,23 @@ export default function MorePorject() {
 
             }
 
-            <div id="projects" className="Projects  py-5" style={{ width: '85%', margin: 'auto' ,paddingTop:'60px'}}>
+            <div id="projects" className="Projects  py-5" style={{ width: '85%', margin: 'auto', paddingTop: '60px' }}>
                 <h3 className="text-center text-uppercase"><span class="card-text text-success">Popular</span> Projects</h3>
                 <div className="row py-5">
 
                     <div className="col-12 mb-5 text-center">
-                        <button style={buttonStyle} className="btn round btn-shuffle active my-1" type="button" data-filter="all" onClick={(event) => filterProject(event, 'all')}>All</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-a" onClick={(event) => filterProject(event, 'web')}>Web App</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-b" onClick={(event) => filterProject(event, 'mobile')}>Mobile App</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-c" onClick={(event) => filterProject(event, 'cctv')}>CCTV</button>
-                        <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-d" onClick={(event) => filterProject(event, 'network')}>Network</button>
-                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-e" onClick={(event) => filterProject(event, 'all')}>Desktop App</button> */}
-                        {/* <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-f" onClick={(event) => filterProject(event, 'all')}>Digital Marketing</button> */}
-                    </div>
+                    <button style={buttonStyle} className="btn round btn-shuffle active my-1" type="button" data-filter="all" onClick={(event) => filterProject(event, 'all')}>All</button>
+
+                        {
+
+                            validsection.map((s) => {
+                                return (
+                                    <button style={buttonStyle} className="btn round btn-shuffle my-1" type="button" data-filter=".category-a" onClick={(event) => filterProject(event, s.name)}>{s.name}</button>
+
+                                )
+                            })
+
+                        }  </div>
 
 
                     <div className="col-12 my-2" >
@@ -190,7 +208,7 @@ export default function MorePorject() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                  
+
                                                     </>
                                                 )
                                             })
@@ -203,7 +221,7 @@ export default function MorePorject() {
                         </div>
                     </div>
                 </div>
-          
+
 
             </div>
         </>
